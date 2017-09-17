@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:p="http://www.springframework.org/schema/p"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:task="http://www.springframework.org/schema/task"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans 
+      http://www.springframework.org/schema/beans/spring-beans-4.3.xsd
+      http://www.springframework.org/schema/task
+   http://www.springframework.org/schema/task/spring-task-4.3.xsd
+   http://www.springframework.org/schema/context
+   http://www.springframework.org/schema/context/spring-context-4.3.xsd">
+
+	<context:component-scan base-package="com.rizwan.test" />
+
+	<!-- Enables detection of @Aysnc and @Scheduled annotations on Spring managed 
+		objects. If present a proxy will be generated for executing those methods 
+		asynchronously. -->
+<!-- 	<task:annotation-driven executor="threadPoolTaskExecutor" scheduler="threadPoolTaskScheduler" /> -->
+
+	<!-- Defines a ThreadPoolTaskExecutor instance with configurable pool size, 
+		queue-capacity, keep-alive, and rejection-policy values -->
+	<!-- The size of the executor's thread pool as either a single value or 
+		a range (e.g. 5-10). If no bounded queue-capacity value is provided, then 
+		a max value has no effect unless the range is specified as 0-n. In that case, 
+		the core pool will have a size of n, but the 'allowCoreThreadTimeout' flag 
+		will be set to true. If a queue- capacity is provided, then the lower bound 
+		of a range will map to the core size and the upper bound will map to the 
+		max size. If this attribute is not provided, the default core size will be 
+		1, and the default max size will be Integer.MAX_VALUE (i.e. unbounded). -->
+<!-- 	<task:executor id="threadPoolTaskExecutor" pool-size="5-10"
+		queue-capacity="100" /> -->
+
+	<!-- Defines a ThreadPoolTaskScheduler instance with configurable pool size. -->
+	<task:scheduler id="threadPoolTaskScheduler" pool-size="1" />
+
+</beans>
